@@ -9,7 +9,10 @@ const request = supertest(app);
 describe('Tests app', function() {
   it('verifies get', function(done) {
     request.get('/tasks').expect(200).end(function(err, result) {
-        test.string(result.body.Output).contains('Rahul');
+
+        console.log('Result is : ' + result);
+        console.log('Error is : ' + err);
+        //test.string(result.body.Output).contains('Rahul');
         //test.value(result).hasHeader('content-type', 'application/json; charset=utf-8');
         done(err);
     });
