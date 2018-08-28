@@ -1,32 +1,36 @@
 var express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
-    //mongoose = require('mongoose'),
-    Task = require('./api/models/testModel'); //created model loading here
-    //bodyParser = require('body-parser');
+    mongoose = require('mongoose'),
+    Task = require('./api/models/testModel'), //created model loading here
+    bodyParser = require('body-parser');
 
 // const MongoClient = require('mongodb').MongoClient;
 //
 // // replace the uri string with your connection string.
-// const uri = "mongodb+srv://application:application@cluster0-zht8z.mongodb.net/test?retryWrites=true"
+const uri = "mongodb+srv://application:application@cluster0-zht8z.mongodb.net/test?retryWrites=true"
 // MongoClient.connect(uri, function(err, client) {
 //     if(err) {
 //         console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
 //     }
 //     console.log('Connected...');
-//     const collection = client.db("test").collection("devices");
+//     // const collection = client.db("test").collection("devices");
 //     // perform actions on the collection object
-//     client.close();
+//     // client.close();
 // });
-
+//
+//
+// // mongoose instance connection url connection
+// MongoClient.Promise = global.Promise;
 
 // mongoose instance connection url connection
-//mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
+mongoose.connect(uri);
 
 //mongoose.connect('mongodb+srv://application:application@cluster0-zht8z.mongodb.net/test?retryWrites=true');
 
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 var routes = require('./api/routes/testRoutes'); //importing route
 routes(app); //register the route

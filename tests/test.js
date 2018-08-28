@@ -12,7 +12,7 @@ describe('Tests app', function() {
 
         console.log('Result is : ' + JSON.stringify(result));
         console.log('Error is : ' + err);
-        test.string(JSON.stringify(result)).contains('Rahul');
+        test.string(JSON.stringify(result)).contains('pending');
         //test.value(result).hasHeader('content-type', 'application/json; charset=utf-8');
         done(err);
     });
