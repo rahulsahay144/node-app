@@ -15,6 +15,7 @@
         "nodemon": "^1.18.3"
     },
     "scripts": {
-        "test": "mocha --recursive tests"
+        "test": "mocha --recursive tests",
+        "start": "node app.js"
     }
 }
