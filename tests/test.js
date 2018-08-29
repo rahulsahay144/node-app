@@ -12,16 +12,22 @@ describe('Tests app', function() {
 
         console.log('Result is : ' + JSON.stringify(result));
         console.log('Error is : ' + err);
+
         test.string(JSON.stringify(result)).contains('pending');
-        //test.value(result).hasHeader('content-type', 'application/json; charset=utf-8');
+        test.value(result).hasHeader('content-type', 'application/json; charset=utf-8');
+
         done(err);
     });
   });
-  // it('verifies post', function(done) {
-  //   request.post('/').expect(200).end(function(err, result) {
-  //       test.string(result.body.Output).contains('Hello');
-  //       test.value(result).hasHeader('content-type', 'application/json; charset=utf-8');
-  //       done(err);
-  //   });
-  // });
+  it('verifies post', function(done) {
+    request.post('/tasks').expect(200).end(function(err, result) {
+        
+        console.log('Result is : ' + JSON.stringify(result));
+        console.log('Error is : ' + err);
+
+        test.string(result.body.Output).contains('pending');
+        test.value(result).hasHeader('content-type', 'application/json; charset=utf-8');
+        done(err);
+    });
+  });
 });
